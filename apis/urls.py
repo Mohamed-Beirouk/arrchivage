@@ -2,6 +2,8 @@ from django.urls import path
 from django.urls.conf import include
 from apis.views import *
 
+from drf_spectacular.views import SpectacularAPIView,SpectacularRedocView,SpectacularSwaggerView
+
 
 app_name='apis'
 
@@ -50,5 +52,8 @@ urlpatterns = [
     path('updatepassassion/<int:id>/',updatepassassion,name='updatepassassion'),
 
     path('updatecompta/<int:id>/',updatecompta,name='updatecompta'),
-    path('stat/',stat,name='stat')
+    path('stat/',stat,name='stat'),
+    
+    
+    path("", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
 ]
